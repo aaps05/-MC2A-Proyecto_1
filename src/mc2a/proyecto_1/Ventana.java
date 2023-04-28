@@ -38,7 +38,7 @@ public class Ventana implements MouseListener, ActionListener, MouseMotionListen
     static JFrame frame;
     JButton aplicar,nuevo;
     Container contenedor;
-    JRadioButton radioNodo, radioArista;
+    JRadioButton CrearNodo, CrearArista;
     JLabel titulo;
     String larista = "0";
     ButtonGroup grupo;
@@ -79,20 +79,19 @@ public Ventana(){
     titulo.setFont(font);
     titulo.setBounds(610, 20, 130, 20);
 
-    radioNodo = new JRadioButton("Crear Nodo");
-    radioArista = new JRadioButton("Crear Arista");
+    CrearNodo = new JRadioButton("Crear Nodo");
+    CrearArista = new JRadioButton("Crear Arista");
 
-    radioArista.setFont(font);
-    radioNodo.setFont(font);
+    CrearArista.setFont(font);
+    CrearNodo.setFont(font);
 
     grupo = new ButtonGroup();
-    grupo.add(radioNodo);
-    grupo.add(radioArista);
-    //grupo.add(radioMod);
-    radioNodo.setSelected(true);
+    grupo.add(CrearNodo);
+    grupo.add(CrearArista);
+    CrearNodo.setSelected(true);
 
-    radioNodo.setBounds(680, 60, 120, 20);
-    radioArista.setBounds(680, 110, 130, 20);
+    CrearNodo.setBounds(680, 60, 120, 20);
+    CrearArista.setBounds(680, 110, 130, 20);
 
     aplicar=new JButton("Crear árbol minimal");
     aplicar.setBounds(670,160, 150, 20);
@@ -102,8 +101,8 @@ public Ventana(){
     nuevo.setFont(font);
     contenedor.setLayout(null);
 
-    contenedor.add(radioArista);
-    contenedor.add(radioNodo);
+    contenedor.add(CrearArista);
+    contenedor.add(CrearNodo);
     contenedor.add(lienzo);
     contenedor.add(aplicar);
     contenedor.add(nuevo);
@@ -127,7 +126,7 @@ public Ventana(){
     }
 
 public void mouseClicked(MouseEvent evento){
-    if (evento.getClickCount() == 2&&radioNodo.isSelected()==true){
+    if (evento.getClickCount() == 2&&CrearNodo.isSelected()==true){
         String nombre = "existen";
 
         do{
@@ -176,7 +175,7 @@ public void actionPerformed(ActionEvent e){
 
 public void mousePressed(MouseEvent arg0){
     contador=0;
-    if(radioArista.isSelected()){
+    if(CrearArista.isSelected()){
         for (int i = 0; i < puntos.size(); i++){
             if (puntos.get(i).ecuacionDeCirculo(arg0.getPoint())){
                     puntos.get(i).setColorPunto(Color.RED);
@@ -196,7 +195,7 @@ public void mousePressed(MouseEvent arg0){
 }
 
 public void mouseReleased(MouseEvent arg0){
-    if(radioArista.isSelected()){
+    if(CrearArista.isSelected()){
         if(pun[1]==null||pun[1].ecuacionDeCirculo(arg0.getPoint())==false||pun[0].getUbicacion().equals(pun[1].getUbicacion()))
                         contador=0;
 
@@ -254,7 +253,7 @@ public void mouseMoved(MouseEvent arg0) {
 
 public void mouseDragged(MouseEvent e) {
 
-if(radioArista.isSelected()){
+if(CrearArista.isSelected()){
     for (int i = 0; i < puntos.size(); i++){
         if (puntos.get(i).ecuacionDeCirculo(e.getPoint())){
             pun[1] = puntos.get(i);
