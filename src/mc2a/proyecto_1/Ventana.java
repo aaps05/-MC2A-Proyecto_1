@@ -33,8 +33,8 @@ import javax.swing.JTextArea;
 public class Ventana implements MouseListener, ActionListener, MouseMotionListener{
     int cantidad = 0;
 
-    ArrayList<Punto> puntos;
-    ArrayList<Arista> aristas;
+    ArrayList<DibujarPunto> puntos;
+    ArrayList<DibujarArista> aristas;
     static JFrame frame;
     JButton aplicar,nuevo;
     Container contenedor;
@@ -43,8 +43,8 @@ public class Ventana implements MouseListener, ActionListener, MouseMotionListen
     String larista = "0";
     ButtonGroup grupo;
     public JTextArea area;
-    Punto pun[];
-    public Lienzo lienzo;
+    DibujarPunto pun[];
+    public LienzodeGrafo lienzo;
     Grafo grafo;
     int j,i;
     int x,y;
@@ -60,17 +60,17 @@ public Ventana(){
 
     grafo=new Grafo();
 
-    lienzo = new Lienzo();
+    lienzo = new LienzodeGrafo();
     lienzo.setBounds(0, 0, 600, 600);
     lienzo.setBorder(BorderFactory.createBevelBorder(1));
     lienzo.setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
 
-    pun = new Punto[2];
+    pun = new DibujarPunto[2];
     pun[0]=null;
     pun[1]=null;
 
-    puntos = new ArrayList<Punto>();
-    aristas = new ArrayList<Arista>();
+    puntos = new ArrayList<DibujarPunto>();
+    aristas = new ArrayList<DibujarArista>();
 
     area=new JTextArea();
     area.setFont(font1);
@@ -144,7 +144,7 @@ public void mouseClicked(MouseEvent evento){
         }
         while(nombre=="existen");
         
-        Punto punto = new Punto((int) evento.getPoint().getX() - 5, (int) evento.getPoint().getY() - 5, nombre);
+        DibujarPunto punto = new DibujarPunto((int) evento.getPoint().getX() - 5, (int) evento.getPoint().getY() - 5, nombre);
         grafo.ingresarNodo(nombre);
         punto.pintarPunto(lienzo.getGraphics());
         puntos.add(punto);
@@ -218,7 +218,7 @@ public void mouseReleased(MouseEvent arg0){
                             }
                     
                 }while(peso==-1);
-                Arista arista=new Arista(pun[0], pun[1],Integer.parseInt(larista),peso);
+                DibujarArista arista=new DibujarArista(pun[0], pun[1],Integer.parseInt(larista),peso);
 
                 aristas.add(arista);
                 lienzo.setAristas(aristas);

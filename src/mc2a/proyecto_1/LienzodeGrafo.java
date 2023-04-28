@@ -13,19 +13,19 @@ import javax.swing.JComponent;
  * @author andre
  */
  
-public class Lienzo extends JComponent{
+public class LienzodeGrafo extends JComponent{
     
-    private ArrayList<Punto> puntos;
-    private ArrayList<Arista> aristas;
-    private ArrayList<Arista> neo;
+    private ArrayList<DibujarPunto> puntos;
+    private ArrayList<DibujarArista> aristas;
+    private ArrayList<DibujarArista> neo;
     private Point a, b;
     public boolean estado = false;
     public boolean punto = false;
  
-    public Lienzo(){
-        aristas = new ArrayList<Arista>();
-        puntos = new ArrayList<Punto>();
-        neo = new ArrayList<Arista>();
+    public LienzodeGrafo(){
+        aristas = new ArrayList<DibujarArista>();
+        puntos = new ArrayList<DibujarPunto>();
+        neo = new ArrayList<DibujarArista>();
     }
  
 public void paintComponent(Graphics g){
@@ -34,17 +34,17 @@ public void paintComponent(Graphics g){
         g.drawLine((int) a.getX() + 5, (int) a.getY() + 5, (int) b.getX() + 5, (int) b.getY() + 5);
     }
     for (int i = 0; i < aristas.size(); i++){
-        final Arista arista = (Arista) aristas.get(i);
+        final DibujarArista arista = (DibujarArista) aristas.get(i);
         arista.pintarRecta(g);
     }
     if (estado)
         for (int i = 0; i < neo.size(); i++){
-            final Arista arista = (Arista) neo.get(i);
+            final DibujarArista arista = (DibujarArista) neo.get(i);
             arista.setColor(Color.RED);
             arista.pintarRecta(g);
         }
     for (int i = 0; i < puntos.size(); i++){
-        final Punto punto = (Punto) puntos.get(i);
+        final DibujarPunto punto = (DibujarPunto) puntos.get(i);
         punto.pintarPunto(g);
     }
 }
@@ -67,27 +67,27 @@ estado = true;
 repaint();
 }
  
-public ArrayList<Punto> getPuntos(){
+public ArrayList<DibujarPunto> getPuntos(){
         return puntos;
 }
 
-public void setPuntos(final ArrayList<Punto> puntos){
+public void setPuntos(final ArrayList<DibujarPunto> puntos){
         this.puntos = puntos;
 }
 
-public ArrayList<Arista> getAristas(){
+public ArrayList<DibujarArista> getAristas(){
         return aristas;
 }
 
-public void setAristas(final ArrayList<Arista> aristas){
+public void setAristas(final ArrayList<DibujarArista> aristas){
         this.aristas = aristas;
 }
 
-public ArrayList<Arista> getNeo(){
+public ArrayList<DibujarArista> getNeo(){
         return neo;
 }
 
-public void setNeo(final ArrayList<Arista> neo){
+public void setNeo(final ArrayList<DibujarArista> neo){
         this.neo = neo;
 }
 

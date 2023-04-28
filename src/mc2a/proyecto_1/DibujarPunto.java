@@ -12,14 +12,14 @@ import java.awt.Point;
  *
  * @author andre
  */
-public class Punto {
+public class DibujarPunto {
     
     private Point ubicacion;
     private String nombre;
     private Color colorPunto = Color.BLUE;
     private static final int RADIO = 10;
 
-    public Punto(int x, int y, String nombre){
+    public DibujarPunto(int x, int y, String nombre){
         ubicacion = new Point(x, y);
         this.nombre = nombre;
     }

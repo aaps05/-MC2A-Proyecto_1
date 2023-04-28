@@ -5,7 +5,6 @@
 package mc2a.proyecto_1;
 
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -71,15 +70,4 @@ public String NodoPosicion(int posi){
     return miEnlace.getDestino();
 }
 
-/*boolean eliminarEnlace(int posicion){
-        if (posicion >= 0 && posicion <= enlaces.size())
-        {
-                enlaces.remove(posicion);
-                enlacesExistentes--;
-                return true;
-        }
-        else
-                JOptionPane.showMessageDialog(null, "No hay enlace en la posicion " + posicion); 
-        return false;
-}*/
 }

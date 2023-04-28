@@ -8,23 +8,22 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.geom.QuadCurve2D;
 
 /**
  *
  * @author andre
  */
-public class Arista {
+public class DibujarArista {
     
 private Arco arista;
-private Punto a, b;
+private DibujarPunto a, b;
 private Point inicial;
 private Point terminal, ubicacionExt;
 private Color color = new Color(0, 128, 128), aux = Color.RED;
 private int tipo;
 private float peso;
 
-public Arista(Punto puntoA, Punto puntoB, int tipo, float peso){
+public DibujarArista(DibujarPunto puntoA, DibujarPunto puntoB, int tipo, float peso){
     arista = new Arco(puntoA.getNombre(), puntoB.getNombre(), peso);
 
     a = puntoA;
