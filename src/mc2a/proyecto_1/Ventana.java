@@ -94,11 +94,11 @@ public Ventana(){
     radioNodo.setBounds(680, 60, 120, 20);
     radioArista.setBounds(680, 110, 130, 20);
 
-    aplicar=new JButton("Aplicar");
-    aplicar.setBounds(670,160, 80, 20);
+    aplicar=new JButton("Crear árbol minimal");
+    aplicar.setBounds(670,160, 150, 20);
     aplicar.setFont(font);
     nuevo=new JButton("Nuevo");
-    nuevo.setBounds(760,160, 80, 20);
+    nuevo.setBounds(670,200, 80, 20);
     nuevo.setFont(font);
     contenedor.setLayout(null);
 
@@ -128,21 +128,21 @@ public Ventana(){
 
 public void mouseClicked(MouseEvent evento){
     if (evento.getClickCount() == 2&&radioNodo.isSelected()==true){
-        String nombre = "hay";
+        String nombre = "existen";
 
         do{
             try{
-                nombre = JOptionPane.showInputDialog(null,"Ingrese la Etiqueta del Nodo");
+                nombre = JOptionPane.showInputDialog(null,"Ingrese nombre del Nodo");
                 nombre.length();
             }
             catch(NullPointerException e){
                 return;
             }if(grafo.getNombres().contains(nombre)||nombre==null){
                 JOptionPane.showMessageDialog(null,"Los nombres de los nodos no pueden ser iguales.","Ingrese nuevamente el nodo",JOptionPane.ERROR_MESSAGE );
-                nombre="hay";
+                nombre="existen";
             }
         }
-        while(nombre=="hay");
+        while(nombre=="existen");
         
         Punto punto = new Punto((int) evento.getPoint().getX() - 5, (int) evento.getPoint().getY() - 5, nombre);
         grafo.ingresarNodo(nombre);
@@ -204,9 +204,9 @@ public void mouseReleased(MouseEvent arg0){
                 float peso=-1;
                 do{
                     try{
-                            peso = Float.parseFloat(JOptionPane.showInputDialog(null,"Ingrese el Peso de la Arista"));
+                            peso = Float.parseFloat(JOptionPane.showInputDialog(null,"Ingrese el peso de la Arista"));
                     }catch(NumberFormatException ex){
-                            JOptionPane.showMessageDialog(null,"El peso de la Arista debe ser un Número","Ingrese de nuevo el Peso",JOptionPane.ERROR_MESSAGE );
+                            JOptionPane.showMessageDialog(null,"El peso de la Arista debe ser un número","Ingrese nuevamente el Peso",JOptionPane.ERROR_MESSAGE );
                             peso=-1;
                     }catch(NullPointerException e){
                             pun[0].setColorPunto(Color.BLUE);
